@@ -1,0 +1,16 @@
+body {
+  font-size: 36px;
+  font-weight: 700;
+  min-height: 100vh;
+  color: #fff;
+  background-color: #000;
+  display: grid;
+  place-content: center;
+}
+
+.content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
