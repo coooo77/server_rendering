@@ -14,8 +14,15 @@ REF: [URL](https://github.com/gitdagray/node_js_resources)
 * [對於 SSR 的思考與使用場景](https://blog.kalan.dev/2020-11-23-rethink-ssr)
 * [[教學] CSR 和 SSR 的差別是什麼? CSR 和 SSR 的超詳細比較!](https://shubo.io/rendering-patterns/)
 
-## Intro to Express JS framework
+## 6. Intro to Express JS framework
 
 * `Express` module
 * middleware
 * regular expressions routes
+
+## 7. Middleware
+* handle urlencoded data (form data)、json、static files
+* middleware
+* handle cors
+* error handler
+* 404 handler

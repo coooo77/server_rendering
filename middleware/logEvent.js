@@ -9,7 +9,7 @@ const path = require('path');
 const logEvents = async (msg, file = 'eventLog.txt') => {
   const content = `${new Date().toJSON()}\t${msg}\r`
 
-  const logPath = path.join(__dirname, 'logs', file)
+  const logPath = path.join(__dirname, '..', 'logs', file)
   const { dir } = path.parse(logPath)
 
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
@@ -17,8 +17,15 @@ const logEvents = async (msg, file = 'eventLog.txt') => {
   try {
     await fsPromise.appendFile(logPath, content)
   } catch (error) {
-    console.error(error)
+    console.error('logEvents ERROR:', error.message)
   }
 }
 
-exports.logEvents = logEvents
+module.exports = {
+  logEvents,
+
+  logger(req, res, next) {
+    logEvents(`Method: ${req.method}\tOrigin: ${req.headers.origin}\tUrl: ${req.url}`, 'reqLog.txt')
+    next()
+  }
+}
