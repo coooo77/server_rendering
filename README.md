@@ -4,7 +4,7 @@
 
 [Node.js Full Course for Beginners | Complete All-in-One Tutorial | 7 Hours](https://www.youtube.com/embed/f2EqECiTBL8)
 
-<iframe width="480" height="270" src="https://www.youtube.com/embed/f2EqECiTBL8" title="Node.js Full Course for Beginners | Complete All-in-One Tutorial | 7 Hours" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+REF: [URL](https://github.com/gitdagray/node_js_resources)
 
 ## basic server rendering app with nodejs
 
@@ -13,3 +13,9 @@
 * [Rendering on the Web](https://web.dev/rendering-on-the-web/)
 * [對於 SSR 的思考與使用場景](https://blog.kalan.dev/2020-11-23-rethink-ssr)
 * [[教學] CSR 和 SSR 的差別是什麼? CSR 和 SSR 的超詳細比較!](https://shubo.io/rendering-patterns/)
+
+## Intro to Express JS framework
+
+* `Express` module
+* middleware
+* regular expressions routes
