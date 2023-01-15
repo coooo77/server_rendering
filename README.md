@@ -27,3 +27,7 @@ REF: [URL](https://github.com/gitdagray/node_js_resources)
 * error handler
 * 404 handler
 * apply all http methods at once
+
+## 8: Routing
+* build a route handler
+* API route
