@@ -26,3 +26,4 @@ REF: [URL](https://github.com/gitdagray/node_js_resources)
 * handle cors
 * error handler
 * 404 handler
+* apply all http methods at once

@@ -88,6 +88,7 @@ const three = (req, res) => {
 }
 app.get('/chain(.html)?', [one, two, three]);
 
+// apply all http methods at once
 app.all('*', (req, res) => {
   res.status(404);
   if (req.accepts('html')) {
