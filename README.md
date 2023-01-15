@@ -34,3 +34,10 @@ REF: [URL](https://github.com/gitdagray/node_js_resources)
 
 ## 9. MVC CRUD REST API
 * build controllers
+
+## 10. Authentication
+* use bcrypt
+* register a new user
+* authenticate user
+
+## 11. JWT Auth
