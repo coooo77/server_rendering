@@ -6,10 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>index page</title>
     <!-- https://www.w3schools.com/html/html_favicon.asp -->
-    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="content">index page</div>
+    <div class="indexPage">
+      <div class="content">index page</div>
+      <input id="userInput" type="text" value="walt3" />
+      <input id="pwdInput" type="password" value="123456" />
+      <button id="auth">Request Auth</button>
+      <div class="authContainer">Your token: <span class="authContent">Null</span></div>
+      <button id="refresh">refresh token</button>
+      <button id="logout">logout</button>
+      <button id="getEmployee">Get Employee</button>
+      <div>Your employee: <span class="employeeContent">Null</span></div>
+    </div>
   </body>
 </html>
+
+<script>
+  function elementClickHandler(id, callback) {
+    const el = document.getElementById(id)
+    el.addEventListener('click', callback)
+  }
+
+  function AppendTextContent(className, content) {
+    const el = document.querySelector(className)
+    el.textContent = content
+  }
+
+  function getElValue(id) {
+    return document.getElementById(id).value
+  }
+
+  const userData = new Proxy(
+    { auth: '' },
+    {
+      get(obj, prop) {
+        return target[name]
+      },
+      set(obj, prop, value) {
+        if (!prop === 'auth') return
+        obj[prop] = value
+        AppendTextContent('.authContent', value)
+      },
+    }
+  )
+
+  elementClickHandler('logout', async () => {
+    await fetch('http://localhost:3500/logout', {
+      method: 'get',
+    })
+
+    userData.auth = ''
+  })
+
+  elementClickHandler('auth', async () => {
+    const res = await fetch('http://localhost:3500/auth', {
+      method: 'POST',
+      body: JSON.stringify({ user: getElValue('userInput'), pwd: getElValue('pwdInput') }),
+      headers: { 'content-type': 'application/json' },
+      credentials: 'include',
+    })
+
+    const { accessToken } = await res.json()
+    auth = accessToken
+    userData.auth = accessToken
+  })
+
+  elementClickHandler('getEmployee', async () => {
+    try {
+      const res = await fetch('http://localhost:3500/employees', {
+        method: 'get',
+        headers: {
+          'content-type': 'application/json',
+          authorization: `bearer ${auth}`,
+        },
+      })
+
+      const content = document.querySelector('.employeeContent')
+      content.textContent = JSON.stringify(await res.json())
+    } catch (error) {
+      console.error(error)
+    }
+  })
+
+  elementClickHandler('refresh', async () => {
+    try {
+      const res = await fetch('http://localhost:3500/refresh', {
+        method: 'get',
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+
+      const { accessToken } = await res.json()
+      auth = accessToken
+      userData.auth = accessToken
+    } catch (error) {
+      console.error(error)
+    }
+  })
+</script>
