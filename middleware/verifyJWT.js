@@ -9,11 +9,11 @@ require('dotenv').config();
  * @returns 
  */
 const verifyJWT = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    const authHeader = req.headers.authorization || req.headers.Authorization;
     // 如果要使用cookie裡面的token自動帶的話 將下面這行打開...
-    // const jwtInCookie = req.cookies?.accessJWT; 
+    const jwtInCookie = req.cookies?.accessJWT;
     // verify header jwt or cookie jwt
-    if (!authHeader && !jwtInCookie) return res.sendStatus(401);
+    if (!authHeader?.startsWith('Bearer ') && !jwtInCookie) return res.sendStatus(401);
     let token = "";
     if (authHeader) {
         // Bearer token
@@ -28,6 +28,7 @@ const verifyJWT = (req, res, next) => {
         (err, decoded) => {
             if (err) return res.sendStatus(403); //invalid token
             req.user = decoded.username;
+            req.roles = decoded.UserInfo.roles;
             next();
         }
     );
