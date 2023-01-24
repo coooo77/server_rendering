@@ -174,3 +174,8 @@ data where deemed necessary in a no-sql structure is permitted
 * **flexibility** - it's very easy to make structural changes like adding a new field without wreaking havoc in your total structure, it's like adding a new property to an object
 * **scalability** - no-sql can support large databases with high request rates at a very low latency
 * **usability** - we can get up and running with mongodb in the cloud very fast
+
+#### 14: Mongoose Data Models
+
+* create schema in mongoose
+* use schema in controllers (registerController)
