@@ -1,6 +1,5 @@
 const { request, response } = require('express')
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 /**
  * @param {request} req 

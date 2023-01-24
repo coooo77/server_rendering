@@ -143,3 +143,34 @@ res.cookie('jwt', refreshToken, {
 // clear refresh token, but maxAge is wont be included
 res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true })
 ```
+
+## 12. User Roles | Authorization
+
+### authentication v.s. authorization
+
+- authentication： the process of verifying who someone is (login)
+- authorization ： the process of verifying what resources a user has access to (request api)
+
+### user roles & permissions
+
+1. add roles in config
+2. add roles to user model
+3. add roles when creating a new user (registerController)
+4. add roles when issuing accessToken (authController and refreshTokenController)
+5. add roles at middleware verifyJWT
+6. verify roles at middleware verifyRoles
+7. add verifyRoles to each api
+
+## 13: Intro to MongoDB & Mongoose
+
+* SQL database are built in a relational structure, related tables reference each other with joins as data is queried. these relational tables also normalize the data that means data is not duplicated in the tables that's the dry principle which stands for don't repeat yourself and that's applied to the structure
+* NO-SQL database like MongoDB you can throw all of that out. mongodb stores data in collections. Individual records in the collections are called documents. the documents have a key value structure and look a lot like a json.
+* for example, a collection holds all of the data about a user instead of breaking into related tables. and likewise duplicating and distributing the 
+data where deemed necessary in a no-sql structure is permitted
+
+#### advantage of mongodb
+
+* **performance** - the speed at which a collection is queried is very fast
+* **flexibility** - it's very easy to make structural changes like adding a new field without wreaking havoc in your total structure, it's like adding a new property to an object
+* **scalability** - no-sql can support large databases with high request rates at a very low latency
+* **usability** - we can get up and running with mongodb in the cloud very fast
