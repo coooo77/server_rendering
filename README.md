@@ -175,7 +175,11 @@ data where deemed necessary in a no-sql structure is permitted
 * **scalability** - no-sql can support large databases with high request rates at a very low latency
 * **usability** - we can get up and running with mongodb in the cloud very fast
 
-#### 14: Mongoose Data Models
+## 14: Mongoose Data Models
 
 * create schema in mongoose
 * use schema in controllers (registerController)
+
+## 15: Async CRUD Operations
+
+* deploy your api on glitch.com (6:45:07)
